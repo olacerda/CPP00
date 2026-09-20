@@ -1,0 +1,6 @@
+*Zone.Identifier
+build
+*.o
+*.a
+output
+a.out
