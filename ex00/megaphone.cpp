@@ -6,7 +6,7 @@
 /*   By: otlacerd <otlacerd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 04:51:12 by otlacerd          #+#    #+#             */
-/*   Updated: 2026/09/09 08:43:10 by otlacerd         ###   ########.fr       */
+/*   Updated: 2026/10/25 17:23:01 by otlacerd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,24 @@
 
 int	main(int argc, char *argv[])
 {
-	int		line;
-	int		index;
 
 	if (argc <= 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	else
 		{
-			line = 1;
-			while (line < argc)
+			for (int line = 1; line < argc; line++)
 			{
-				index = 0;
-				while (argv[line][index])
+				for (int index = 0; argv[line][index]; index++)
 				{
 					if (std::isalpha(argv[line][index]))
-						std::cout << (char)std::toupper(argv[line][index]);
+						std::cout << static_cast<char>(std::toupper(argv[line][index]));
 					else
 						std::cout << (char)argv[line][index];
-					index++;
 				}
-				line++;
 				if ((line + 1) < argc)
 					std::cout << ' ';
 			}
 		}	
-	std::cout << "\n";
+	std::cout << std::endl;
 	return (0);
 }

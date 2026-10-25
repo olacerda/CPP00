@@ -1,25 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otlacerd <otlacerd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 08:50:00 by otlacerd          #+#    #+#             */
-/*   Updated: 2026/09/17 01:20:22 by otlacerd         ###   ########.fr       */
+/*   Updated: 2026/10/25 18:37:04 by otlacerd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
+#include "Contact.hpp"
 
-void	Contact::add_information(int index)
+int	Contact::add_information(int index)
 {
-	std::getline(std::cin, this->first_name);
-	std::getline(std::cin, this->last_name);
-	std::getline(std::cin, this->nick_name);
-	std::getline(std::cin, this->phone_number);
-	std::getline(std::cin, this->darkest_secret);
+	std::string first_name;
+	std::string last_name;
+	std::string nick_name;
+	std::string phone_number;
+	std::string darkest_secret;
+
 	this->index = index;
+	std::cout << "First name: ";
+	std::getline(std::cin, first_name);
+	if (first_name.empty())
+		return 0;
+
+	std::cout << "Last name: ";
+	std::getline(std::cin, last_name);
+	if (last_name.empty())
+		return 0;
+
+	std::cout << "Nick name: ";
+	std::getline(std::cin, nick_name);
+	if (nick_name.empty())
+		return 0;
+
+	std::cout << "Phone number: ";
+	std::getline(std::cin, phone_number);
+	if (phone_number.empty())
+		return 0;
+
+	std::cout << "Darkest secret: ";
+	std::getline(std::cin, darkest_secret);
+	if (darkest_secret.empty())
+		return 0;
+	this->first_name = first_name;
+	this->last_name = last_name;
+	this->nick_name = nick_name;
+	this->phone_number = phone_number;
+	this->darkest_secret = darkest_secret;
+	return 1;
 }
 
 void	show_ten_characters(std::string string, int pipe)
@@ -45,7 +76,7 @@ void	Contact::display_information()
 		show_ten_characters(this->first_name, 1);
 		show_ten_characters(this->last_name, 1);
 		show_ten_characters(this->nick_name, 0);
-		std::cout << "\n";		
+		std::cout << std::endl;		
 	}
 }
 
@@ -61,5 +92,5 @@ void	Contact::display_all_information()
 	std::cout << "last name: " << this->last_name << "\n";
 	std::cout << "nick name: " << this->nick_name << "\n";
 	std::cout << "phone number: " << this->phone_number << "\n";
-	std::cout << "darkest secret: " << this->darkest_secret << "\n";
+	std::cout << "darkest secret: " << this->darkest_secret << std::endl;
 }

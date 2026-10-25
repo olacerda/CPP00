@@ -6,7 +6,7 @@
 #    By: otlacerd <otlacerd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/09 04:52:29 by otlacerd          #+#    #+#              #
-#    Updated: 2026/09/16 23:04:50 by otlacerd         ###   ########.fr        #
+#    Updated: 2026/10/25 17:21:05 by otlacerd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = phonebook
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp phonebook.cpp contact.cpp
+SRCS = main.cpp Phonebook.cpp Contact.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

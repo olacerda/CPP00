@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otlacerd <otlacerd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/09 08:51:11 by otlacerd          #+#    #+#             */
-/*   Updated: 2026/09/17 00:35:03 by otlacerd         ###   ########.fr       */
+/*   Created: 2026/09/09 08:51:13 by otlacerd          #+#    #+#             */
+/*   Updated: 2026/10/25 18:00:15 by otlacerd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 # include <iostream>
-# include <iomanip>
+# include "Contact.hpp"
+# include <stdlib.h>
 
-	class Contact
-	{
-		private:
-			int			index;
-			std::string first_name;
-			std::string	last_name;
-			std::string nick_name;
-			std::string phone_number;
-			std::string darkest_secret;
+class Phonebook
+{
+	private:
+		Contact contacts[8];
 
-		public:
-			void add_information(int index);
-			void display_information();
-			void display_all_information();
-	};
+	public:
+		int add(int index);
+		int search();
+		int check_number(std::string number);
+		void exit();
+};
 
 #endif

@@ -1,47 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otlacerd <otlacerd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 08:50:02 by otlacerd          #+#    #+#             */
-/*   Updated: 2026/09/20 15:12:29 by otlacerd         ###   ########.fr       */
+/*   Updated: 2026/10/25 18:15:55 by otlacerd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
-#include "phonebook.hpp"
+#include "Contact.hpp"
+#include "Phonebook.hpp"
 
-void	Phonebook::add(int index)
+int	Phonebook::add(int index)
 {
-	this->contacts[index].add_information(index);
+	if (!this->contacts[index].add_information(index))
+		return 0;
+	return 1;
 }
 
-void	Phonebook::search()
+int	Phonebook::search()
 {
 	std::string number;
-	int	index;
 
-	index = 0;
-	std::cout << "     index|first name| last name| nick name\n";
-	while (index < 8)
+	std::cout << "     index|first name| last name| nick name\n" << std::endl;
+	for (int index = 0; index < 8; index++)
 	{
 		this->contacts[index].display_information();
-		index++;
 	}
-	while (1)
+	for(;;)
 	{
-		std::cout << "Display: ";
-		std::getline(std::cin, number);
+		std::cout << "Display: " << std::endl;
+		if (!std::getline(std::cin, number))
+			return 0;
 		if (number.length() != 1 || number[0] < 48 || number[0] > 55)
 		{
-			std::cout << "Expected a valid number, please try again\n";
+			std::cout << "Expected a valid number, please try again\n" << std::endl;
 			continue ;
 		}
 		break ;
 	}
 	this->contacts[number[0] - '0'].display_all_information();
+	return 1;
 }
 
 void	Phonebook::exit()
